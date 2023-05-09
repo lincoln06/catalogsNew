@@ -5,15 +5,15 @@
 {% block body %}
 <div id="wrapper">
     <ol>
-        {% for type in system_types %}
-            <li class="system">{{ type }}
+        {% for producer in producers %}
+            <li class="system">{{ producer.name }}
+
                 <ul>
-                    {% for catalog in catalogs %}
-                        {% if catalog.system==type %}
-                            <li><a href="{{ catalog.path }}">{{ catalog.name }}</a></li>
-                        {% endif %}
+                    {% for catalog in catalogs[producer.name] %}
+                    <li class="system"><a href="{{ catalog.path }}">{{ catalog.system }}</a></li>
                     {% endfor %}
                 </ul>
+
             </li>
         {% endfor %}
         <li class="set">
@@ -21,6 +21,7 @@
                 <img src="img/seticon.svg" alt="Settings" width="12%" height="12%">
             </a>
         </li>
+
     </ol>
 </div>
 {% endblock %}

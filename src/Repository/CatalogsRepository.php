@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\CatalogIndex;
+use App\Entity\Catalogs;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<CatalogIndex>
+ * @extends ServiceEntityRepository<Catalogs>
  *
- * @method CatalogIndex|null find($id, $lockMode = null, $lockVersion = null)
- * @method CatalogIndex|null findOneBy(array $criteria, array $orderBy = null)
- * @method CatalogIndex[]    findAll()
- * @method CatalogIndex[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Catalogs|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Catalogs|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Catalogs[]    findAll()
+ * @method Catalogs[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CatalogIndexRepository extends ServiceEntityRepository
+class CatalogsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CatalogIndex::class);
+        parent::__construct($registry, Catalogs::class);
     }
 
-    public function save(CatalogIndex $entity, bool $flush = false): void
+    public function save(Catalogs $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CatalogIndexRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(CatalogIndex $entity, bool $flush = false): void
+    public function remove(Catalogs $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CatalogIndexRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return CatalogIndex[] Returns an array of CatalogIndex objects
+//     * @return Catalogs[] Returns an array of Catalogs objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CatalogIndexRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?CatalogIndex
+//    public function findOneBySomeField($value): ?Catalogs
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

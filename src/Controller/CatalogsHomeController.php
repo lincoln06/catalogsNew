@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Systems;
-use App\Repository\CatalogIndexRepository;
-use App\Repository\SystemsRepository;
+
+use App\Repository\CatalogsRepository;
+use App\Repository\ProducerRepository;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
@@ -17,17 +17,20 @@ class CatalogsHomeController extends AbstractController
 {
     #[Route('/catalogs', name: 'app_catalogs_home')]
 
-    public function index(SystemsRepository $systemsRepository, CatalogIndexRepository $catalogIndexRepository): Response
+    public function index(ProducerRepository $producerRepository, CatalogsRepository $catalogIndexRepository): Response
     {
-        $types=$systemsRepository->findAll();
-        $catalogs=$catalogIndexRepository->findAll();
 
-        $typeNames=[];
-        foreach($types as $type) {
-            array_push($typeNames,$type->getName());
+
+        $producers=$producerRepository->findAll();
+        $catalogs=[];
+        foreach($producers as $producer) {
+            $catalogs[$producer->getName()]=$producer->getCatalogs();
         }
+
+
         return $this->render('catalogs_home/index.html.twig', [
-                'system_types'=>$typeNames,
+
+                'producers'=>$producers,
                 'catalogs'=>$catalogs
             ]
         );

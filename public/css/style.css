@@ -77,3 +77,18 @@ ol>li.system:hover>ul>li:hover {
     background-color: #102E44;
     color: #ffffff;
 }
+ol>li.system:hover>ul>li>a {
+    display: block;
+    text-decoration: none;
+    color: #102e44;
+}
+ol>li.system:hover>ul>li:hover>a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+ol>li.system:hover>ul>li:hover>a:hover {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
