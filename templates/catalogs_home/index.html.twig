@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogsHomeController!{% endblock %}
+
+{% block body %}
+<div id="wrapper">
+    <ol>
+        {% for type in system_types %}
+            <li class="system">{{ type }}
+                <ul>
+                    {% for catalog in catalogs %}
+                        {% if catalog.system==type %}
+                            <li><a href="{{ catalog.path }}">{{ catalog.name }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+        <li class="set">
+            <a href="/admin/panel">
+                <img src="img/seticon.svg" alt="Settings" width="12%" height="12%">
+            </a>
+        </li>
+    </ol>
+</div>
+{% endblock %}
