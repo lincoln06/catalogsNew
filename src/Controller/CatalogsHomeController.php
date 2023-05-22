@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Repository\CatalogsRepository;
 use App\Repository\ProducerRepository;
+use App\Repository\UserRepository;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
