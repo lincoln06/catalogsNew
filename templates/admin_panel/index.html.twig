@@ -5,17 +5,17 @@
     <script type="application/javascript" src="/js/backToHomePage.js"></script>
 {% endblock %}
 {% block body %}
-<select>
-    {%for type in system_types %}
-    <optgroup label="{{ type }}">
-        {% for catalog in catalogs %}
-            {% if catalog.system==type %}
-            <option>{{ catalog.name }}</option>
-            {% endif %}
-        {% endfor %}
-    </optgroup>
-    {% endfor %}
-</select>
+<ul>
+    <li>
+        <a href="{{ path('app_editor_panel') }}">Panel edycji</a>
+    </li>
+    <li>
+        <a href="{{ path('app_register') }}">Dodaj użytkownika</a>
+    </li>
+    <li>
+        <a href="#">Lista użytkowników</a>
+    </li>
+</ul>
     <button onClick="goBack()">Wyloguj</button>
 
 
