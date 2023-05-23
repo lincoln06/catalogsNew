@@ -18,6 +18,23 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    {% block body %}
+            {% if is_granted('ROLE_USER') %}
+                <header>
+                    <ol>
+                        <li>
+                            Zalogowany jako: {{ app.user.email }}
+                            {% if is_granted('ROLE_EDITOR') %}
+                                |&nbsp;<a href="{{ path('app_editor_panel') }}">Panel edycji</a>
+                            {% endif %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                |&nbsp;<a href="{{ path('app_admin_panel') }}">Panel administratora</a>
+                            {% endif %}
+                            |&nbsp;<a href="{{ path('app_logout') }}">Wyloguj</a>
+                        </li>
+                    </ol>
+                </header>
+            {% endif %}
+    {% endblock %}
     </body>
 </html>

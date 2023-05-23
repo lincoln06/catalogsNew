@@ -4,6 +4,7 @@
 
 {% block body %}
 <div id="wrapper">
+    {{ parent() }}
     <ol>
         {% for producer in producers %}
             <li class="system">{{ producer.name }}
@@ -16,12 +17,11 @@
 
             </li>
         {% endfor %}
-        <li class="set">
-            <a href="/admin/panel">
-                <img src="img/seticon.svg" alt="Settings" width="12%" height="12%">
-            </a>
-        </li>
+        <li class="system">
 
+            <a href="https://docucenter.schueco.com/">Schuco</a>
+
+        </li>
     </ol>
 </div>
 {% endblock %}

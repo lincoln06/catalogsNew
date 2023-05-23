@@ -1,22 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello AdminPanelController!{% endblock %}
-{% block javascripts %}
-    <script type="application/javascript" src="/js/backToHomePage.js"></script>
-{% endblock %}
-{% block body %}
-<ul>
-    <li>
-        <a href="{{ path('app_editor_panel') }}">Panel edycji</a>
-    </li>
-    <li>
-        <a href="{{ path('app_register') }}">Dodaj użytkownika</a>
-    </li>
-    <li>
-        <a href="#">Lista użytkowników</a>
-    </li>
-</ul>
-    <button onClick="goBack()">Wyloguj</button>
 
+{% block body %}
+    {{ parent() }}
+    <ul>
+        <li>
+            <a href="{{ path('app_editor_panel') }}">Panel edycji</a>
+        </li>
+        <li>
+            <a href="{{ path('app_register') }}">Dodaj użytkownika</a>
+        </li>
+        <li>
+            <a href="#">Lista użytkowników</a>
+        </li>
+
+    </ul>
 
 {% endblock %}

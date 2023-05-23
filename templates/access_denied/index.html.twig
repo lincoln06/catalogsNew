@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccessDeniedController!{% endblock %}
+
+{% block body %}
+    <p> Wygląda na to, że nie masz uprawnień do wyświetlenia tej zawartości.</p>
+    {% set redirectPath='app_login' %}
+    {% if is_granted('ROLE_USER') %}
+        {% set redirectPath='app_catalogs_home' %}
+    {% endif %}
+    <a href="{{ path(redirectPath) }}">Powrót</a>
+
+
+{% endblock %}
