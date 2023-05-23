@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UsersController!{% endblock %}
+
+{% block body %}
+{{ parent() }}
+    {% for user in users %}
+        <li>{{ user.id }} - {{ user.email }} - <a href="{{ path('app_delete_user',{'id':user.id}) }}">USUŃ</a></li>
+    {% endfor %}
+{% endblock %}
