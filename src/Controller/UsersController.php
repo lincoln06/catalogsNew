@@ -48,6 +48,9 @@ class UsersController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data=$form->getData();
             $roles=$data->getRoles();
+            //this part of code clears the user's roles
+            $user->setRoles([]);
+            //it is necessary to revoke permissions from some users
             $user->setRoles($roles);
             $entityManager->persist($user);
             $entityManager->flush();

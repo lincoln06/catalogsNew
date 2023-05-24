@@ -5,14 +5,27 @@
 {% block body %}
 {{ parent() }}
     {% for user in users %}
+        {# Logika zabezpiecza w następujący sposób: #}
+        {# root widzi wszystkich prócz siebie #}
+        {# admin widzi wszystkich prócz roota, administratorów i siebie #}
+        {# chodziło o to, aby admini mogli nadawać uprawnienia administratora ale nie mogli ich odbierać #}
+        {# odbierać uprawnienia adminom może tylko root #}
+        {% if ((('ROLE_ROOT' not in user.roles) and user.email!=app.user.email) and (is_granted('ROLE_ADMIN') and ('ROLE_ADMIN' not in user.roles)))  %}
         <ul>
             <li>{{ user.id }} - {{ user.email }}</li>
             {% for role in user.roles %}
                 <li>{{ role }}</li>
             {% endfor %}
-            <li><a href="{{ path('app_delete_user',{'id':user.id}) }}">USUŃ</a>
-                -<a href="{{ path('app_edit_user',{'id':user.id}) }}">EDYTUJ</a>
+
+            <li>
+
+                <a href="{{ path('app_delete_user',{'id':user.id}) }}">USUŃ</a>
+                -
+
+                    <a href="{{ path('app_edit_user',{'id':user.id}) }}">EDYTUJ</a>
             </li>
         </ul>
+        {% endif %}
     {% endfor %}
+
 {% endblock %}
