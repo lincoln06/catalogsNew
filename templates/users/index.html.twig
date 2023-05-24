@@ -5,6 +5,14 @@
 {% block body %}
 {{ parent() }}
     {% for user in users %}
-        <li>{{ user.id }} - {{ user.email }} - <a href="{{ path('app_delete_user',{'id':user.id}) }}">USUŃ</a></li>
+        <ul>
+            <li>{{ user.id }} - {{ user.email }}</li>
+            {% for role in user.roles %}
+                <li>{{ role }}</li>
+            {% endfor %}
+            <li><a href="{{ path('app_delete_user',{'id':user.id}) }}">USUŃ</a>
+                -<a href="{{ path('app_edit_user',{'id':user.id}) }}">EDYTUJ</a>
+            </li>
+        </ul>
     {% endfor %}
 {% endblock %}

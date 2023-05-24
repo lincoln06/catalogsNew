@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Edycja</h1>
+    <p>{{ userName }}</p>
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.roles, {
+            label: 'Kategoria'
+        }) }}
+
+        <button type="submit" class="btn">Register</button>
+
+    {{ form_end(registrationForm) }}
+    <a href="{{ path('app_admin_panel') }}">Powrót do panelu administratora</a>
+{% endblock %}
