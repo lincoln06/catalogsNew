@@ -10,7 +10,7 @@
         {# admin widzi wszystkich prócz roota, administratorów i siebie #}
         {# chodziło o to, aby admini mogli nadawać uprawnienia administratora ale nie mogli ich odbierać #}
         {# odbierać uprawnienia adminom może tylko root #}
-        {% if ((('ROLE_ROOT' not in user.roles) and user.email!=app.user.email) and (is_granted('ROLE_ADMIN') and ('ROLE_ADMIN' not in user.roles)))  %}
+        {% if ('ROLE_ADMIN' in app.user.roles and 'ROLE_ADMIN' not in user.roles) or ('ROLE_ROOT' in app.user.roles) %}
         <ul>
             <li>{{ user.id }} - {{ user.email }}</li>
             {% for role in user.roles %}

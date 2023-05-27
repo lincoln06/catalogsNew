@@ -8,13 +8,12 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
+{% for catalog in catalogs %}
     <ul>
-        <li>Your controller at <code><a href="{{ '/home/maciek/dev/katalogi_new/src/Controller/EditorPanelController.php'|file_link(0) }}">src/Controller/EditorPanelController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/maciek/dev/katalogi_new/templates/editor_panel/index.html.twig'|file_link(0) }}">templates/editor_panel/index.html.twig</a></code></li>
+        <li>{{ catalog.System }}</li>
+        <li>{{ catalog.Path }}</li>
+        <li>{{ catalog.DateAdded }}</li>
+        <li>{{ catalog.Path }}</li>
     </ul>
-</div>
+    {% endfor %}
 {% endblock %}

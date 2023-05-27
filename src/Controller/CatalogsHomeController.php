@@ -3,12 +3,7 @@
 namespace App\Controller;
 
 
-use App\Repository\CatalogsRepository;
 use App\Repository\ProducerRepository;
-use App\Repository\UserRepository;
-use Doctrine\Bundle\DoctrineBundle\Registry;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +13,7 @@ class CatalogsHomeController extends AbstractController
 {
     #[Route('/catalogs', name: 'app_catalogs_home')]
 
-    public function index(ProducerRepository $producerRepository, CatalogsRepository $catalogIndexRepository): Response
+    public function index(ProducerRepository $producerRepository): Response
     {
 
 

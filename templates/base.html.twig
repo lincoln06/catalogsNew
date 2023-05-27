@@ -23,7 +23,13 @@
                 <header>
                     <ol>
                         <li>
-                            Zalogowany jako: {{ app.user.email }}
+                            {% if app.user.email is not defined %}
+                                {% set username='ROOT' %}
+                            {% endif %}
+                            {% if app.user.email is defined %}
+                                {% set username=app.user.email %}
+                            {% endif %}
+                            Zalogowany jako: {{ username }}
                             {% if is_granted('ROLE_EDITOR') %}
                                 |&nbsp;<a href="{{ path('app_editor_panel') }}">Panel edycji</a>
                             {% endif %}
