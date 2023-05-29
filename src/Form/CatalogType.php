@@ -3,10 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Catalogs;
+use App\Entity\Producer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class CatalogType extends AbstractType
 {
@@ -15,10 +18,15 @@ class CatalogType extends AbstractType
         $builder
             // ...
             ->add('System')
-            ->add('Producer')
+            ->add('Producer', EntityType::class,[
+                'class' => Producer::class,
+                'choice_label' => function($producer) {
+                    return $producer->getName();
+                }
+            ])
             ->add('DateAdded')
-            ->add('file', FileType::class, [
-                'label' => 'Plik',
+            ->add('catalog', FileType::class, [
+                'label' => 'Przeglądaj...',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
@@ -36,7 +44,7 @@ class CatalogType extends AbstractType
                             'application/pdf',
                             'application/x-pdf',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                        'mimeTypesMessage' => 'Załadownany plik nie jest prawidłowym plikiem PDF',
                     ])
                 ],
             ])

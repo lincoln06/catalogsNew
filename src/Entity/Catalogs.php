@@ -16,16 +16,16 @@ class Catalogs
 
     #[ORM\Column(length: 40)]
     private ?string $System = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $Path = null;
-
+    
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $DateAdded = null;
 
     #[ORM\ManyToOne(inversedBy: 'catalogs')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Producer $Producer = null;
+
+    #[ORM\Column(type: 'string')]
+    private $catalogFilename;
 
     public function getId(): ?int
     {
@@ -40,18 +40,6 @@ class Catalogs
     public function setSystem(string $System): self
     {
         $this->System = $System;
-
-        return $this;
-    }
-
-    public function getPath(): ?string
-    {
-        return $this->Path;
-    }
-
-    public function setPath(string $Path): self
-    {
-        $this->Path = $Path;
 
         return $this;
     }
@@ -76,6 +64,18 @@ class Catalogs
     public function setProducer(?Producer $Producer): self
     {
         $this->Producer = $Producer;
+
+        return $this;
+    }
+
+    public function getCatalogFilename(): string
+    {
+        return $this->catalogFilename;
+    }
+
+    public function setCatalogFilename(string $catalogFilename): self
+    {
+        $this->catalogFilename = $catalogFilename;
 
         return $this;
     }

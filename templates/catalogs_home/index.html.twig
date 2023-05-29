@@ -11,7 +11,7 @@
 
                 <ul>
                     {% for catalog in catalogs[producer.name] %}
-                    <li class="system"><a href="{{ catalog.path }}">{{ catalog.system }}</a></li>
+                    <li class="system"><a href="{{ asset('uploads/catalogs/' ~ catalog.catalogFilename) }}">{{ catalog.system }}</a></li>
                     {% endfor %}
                 </ul>
 
